@@ -15,12 +15,12 @@ home_path = os.path.dirname(os.path.abspath(__file__))
 
 def main(_):
     # Get the frozen graph
+    #the teacher graph
     frozen_graphTeacher = freeze_graph("TeacherHint", "hintLayerNext")
+    #the student grap
     froszen_graphStuden= freeze_graph("TeacherHint", "studentGuided")
-
     # Set the frozen graph as a default graph
     froszen_graphStuden.as_default()
-
     # Get the output tensor from the pre-trained model
     pre_trained_model_result = frozen_graph.get_tensor_by_name("studentGuided")
 

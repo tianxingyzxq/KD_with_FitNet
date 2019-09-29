@@ -44,9 +44,6 @@ def main(_):
         ## load Net
         class_loss, accuracy = MODEL(model_name, "Teacher", weight_decay, image, label,
                                      is_training_ph, reuse = False, drop = True, Distillation = None)
-
-
-
         ## make placeholder and summary op for training and validation results
         train_acc_place = tf.placeholder(dtype=tf.float32)
         val_acc_place   = tf.placeholder(dtype=tf.float32)

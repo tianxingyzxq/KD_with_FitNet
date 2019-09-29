@@ -4,89 +4,8 @@ from tensorflow.python.framework import function
 def removenan(x):
     return tf.where(tf.is_finite(x), x,tf.zeros_like(x))
 
-def SVD(X, n, name = None):
-    with tf.variable_scope(name):
-        sz = X.get_shape().as_list()
-        if len(sz)==4:
-            x = tf.reshape(X,[-1,sz[1]*sz[2],sz[3]])
-        elif len(sz)==3:
-            x = X
-        else:
-            x = tf.expand_dims(X, 1)
-            n = 1
-        _, HW, D = x.get_shape().as_list()
 
-        with tf.device('CPU'):
-            g = tf.get_default_graph()
-            with g.gradient_override_map({"Svd": "Svd_"}):
-                s,u,v = tf.svd(x,full_matrices=False)
-                
-        s = removenan(s)
-        v = removenan(v)
-        u = removenan(u)
-        
-        if n > 0:
-            s = tf.nn.l2_normalize(tf.slice(s,[0,0],[-1,n]),1)
-            u = tf.nn.l2_normalize(tf.slice(u,[0,0,0],[-1,-1,n]),1)
-            v = tf.nn.l2_normalize(tf.slice(v,[0,0,0],[-1,-1,n]),1)
-        
-        return s, u, v
 
-def SVD_eid(X, n, name = None):
-    with tf.variable_scope(name):
-        sz = X.get_shape().as_list()
-        if len(sz)==4:
-            x = tf.reshape(X,[-1,sz[1]*sz[2],sz[3]])
-        elif len(sz)==3:
-            x = X
-        else:
-            x = tf.expand_dims(X, 1)
-            n = 1
-        _, HW, D = x.get_shape().as_list()
-
-        x_ = tf.stop_gradient(x)
-
-        if HW/D < 3/2  and 2/3 < HW/D:
-            with tf.device('CPU'):
-                g = tf.get_default_graph()
-                with g.gradient_override_map({"Svd": "Svd_"}):
-                    s,u,v = tf.svd(x_,full_matrices=False)
-
-        else:
-            if HW < D:
-                xxt = tf.matmul(x_,x_,transpose_b = True)
-                with tf.device('CPU'):
-                    _,u_svd,_ = tf.svd(xxt,full_matrices=False)
-
-                v_svd = tf.matmul(x_, u_svd, transpose_a = True)
-                s_svd = tf.linalg.norm(v_svd, axis = 1)
-                v_svd = removenan(v_svd/tf.expand_dims(s_svd,1))
-                
-            else:
-                xtx = tf.matmul(x_,x_,transpose_a = True)
-                with tf.device('CPU'):
-                    _, v_svd = tf.linalg.eigh(xtx)
-                v_svd = tf.reshape(tf.image.flip_left_right(tf.reshape(v_svd,[-1,D,D,1])),[-1,D,D])
-                u_svd = tf.matmul(x_, v_svd)
-                s_svd = tf.linalg.norm(u_svd, axis = 1)
-                u_svd = removenan(u_svd/tf.expand_dims(s_svd,1))
-    
-            s,u,v = SVD_grad_map(x,s_svd,u_svd,v_svd)
-            s = tf.reshape(s,[-1,   min(HW,D)])
-            u = tf.reshape(u,[-1,HW,min(HW,D)])
-            v = tf.reshape(v,[-1, D,min(HW,D)])
-        s = tf.nn.l2_normalize(tf.slice(s,[0,0],[-1,n])     ,1)
-        U = tf.nn.l2_normalize(tf.slice(u,[0,0,0],[-1,-1,n]),1)
-        V = tf.nn.l2_normalize(tf.slice(v,[0,0,0],[-1,-1,n]),1)
-        
-        return s, U, V
-    
-def Align_rsv(V_T, V_S):
-    cosine = tf.stop_gradient(tf.matmul(V_T, V_S, transpose_a=True))
-    mask = tf.where(tf.equal(tf.reduce_max(tf.abs(cosine), 2,keepdims=True), tf.abs(cosine)),
-                    tf.sign(cosine), tf.zeros_like(cosine))
-    V_S = tf.matmul(V_S, mask, transpose_b = True)
-    return V_S, mask
 
 @tf.RegisterGradient('Svd_')
 def gradient_svd(op, ds, dU, dV):

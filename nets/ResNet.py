@@ -4,10 +4,8 @@ from __future__ import print_function
 
 import tensorflow as tf
 
-from nets import Response
 from nets import Multiple
-from nets import Shared
-from nets import Relation
+
 
 
 def ResNet_arg_scope(weight_decay=0.0005):
