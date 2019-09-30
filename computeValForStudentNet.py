@@ -16,7 +16,8 @@ home_path = os.path.dirname(os.path.abspath(__file__))
 
 tf.app.flags.DEFINE_string('dataset', 'cifar100',
                            'Distillation method : cifar100, TinyImageNet, CUB200')
-
+tf.app.flags.DEFINE_integer('hintLayerIndex', 16)
+tf.app.flags.DEFINE_integer('guidedLayerIndex',2)
 
 def main(_):
     ### define path and hyper-parameter
@@ -78,7 +79,7 @@ def main(_):
 
 def MODEL(model_name, scope, weight_decay, image, label, is_training, reuse, drop, Distillation):
     network_fn = nets_factory.get_network_fn(model_name, weight_decay = weight_decay)
-    end_points = network_fn(image, label, scope, is_training=is_training, reuse=reuse, drop = drop, Distill=Distillation)
+    end_points = network_fn(image, label, scope, is_training=is_training, reuse=reuse, drop = drop, Distill=Distillation,hintLayerIndex=FLAGS.hintLayerIndex,guidedLayerIndex=FLAGS.guidedLayerIndex)
 
     loss = tf.losses.softmax_cross_entropy(label,end_points['Logits'])
     if Distillation == 'DML':

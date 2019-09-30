@@ -21,8 +21,10 @@ tf.app.flags.DEFINE_string('dataset', 'cifar100',
                            'Distillation method : cifar100, TinyImageNet, CUB200')
 tf.app.flags.DEFINE_string('main_scope', 'Student',
                            'networ`s scope')
-tf.app.flags.DEFINE_string('hintLayerIndex : 3,4,5,6,7,8,9,10,11')
-tf.app.flags.DEFINE_string('guidedLayerIndex :
+tf.app.flags.('max_steps', 1000000,
+                        """Number of batches to run.""")
+tf.app.flags.DEFINE_integer('hintLayerIndex', 16)
+tf.app.flags.DEFINE_integer('guidedLayerIndex',2)
 
 FLAGS = tf.app.flags.FLAGS
 def main(_):
@@ -73,7 +75,7 @@ def main(_):
 
         ## load Net
         class_loss, accuracy = MODEL(model_name, FLAGS.main_scope, weight_decay, image, label,
-                                     is_training_ph, reuse = False, drop = True, Distillation = FLAGS.Distillation)
+                                     is_training_ph, reuse = False, drop = True, Distillation = FLAGS.Distillation,hintLayerIndex=FLAGS.hintLayerIndex,guidedLayerIndex=FLAGS.guidedLayerIndex)
 
         #make training operator
         train_op = op_util.Optimizer_w_Distillation(class_loss, LR, epoch, init_epoch, global_step, FLAGS.Distillation)

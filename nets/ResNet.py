@@ -73,7 +73,7 @@ def NetworkBlock(x, nb_layers, depth, stride, is_training=False, reuse=False, na
     return out
 
 
-def ResNet(image, label, scope, is_training, reuse=False, drop=False, Distill=None,hintLayerIndex=3,guidedLayerIndex=3):
+def ResNet(image, label, scope, is_training, reuse=False, drop=False, Distill=None,guidedLayerIndex=2,hintLayerIndex=16):
     end_points = {}
 
     nChannels = [32, 64, 128, 256] if scope != 'teacher' else [32, 64, 128, 256]
@@ -135,8 +135,8 @@ def ResNet(image, label, scope, is_training, reuse=False, drop=False, Distill=No
             for i in range(len(feats)):
                 print(feats[i])
 
-            student_feats = feats[2]
-            teacher_feats = feats[16]
+            student_feats = feats[guidedLayerIndex]
+            teacher_feats = feats[hintLayerIndex]
             feats_noact = tf.get_collection('feat_noact')
 
 
