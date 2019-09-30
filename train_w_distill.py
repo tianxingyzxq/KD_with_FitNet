@@ -22,8 +22,8 @@ tf.app.flags.DEFINE_string('dataset', 'cifar100',
 tf.app.flags.DEFINE_string('main_scope', 'Student',
                            'networ`s scope')
 
-tf.app.flags.DEFINE_integer('hintLayerIndex', 16)
-tf.app.flags.DEFINE_integer('guidedLayerIndex',2)
+tf.app.flags.DEFINE_integer('hintLayerIndex', 16,'The hint layer index')
+tf.app.flags.DEFINE_integer('guidedLayerIndex',2,'The guided layer index')
 
 FLAGS = tf.app.flags.FLAGS
 def main(_):
