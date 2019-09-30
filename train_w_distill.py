@@ -115,12 +115,11 @@ def main(_):
             epoch_ = 0
             for step in range(max_number_of_steps):
                 start_time = time.time()
-
                 ## feed data
-                 tl, log, train_acc = sess.run([train_op, summary_op, accuracy],
-                                                  feed_dict = {image_ph : train_images[idx[:batch_size]],
-                                                               label_ph : np.squeeze(train_labels[idx[:batch_size]]),
-                                                               is_training_ph : True})
+                tl, log, train_acc = sess.run([train_op, summary_op, accuracy],
+                                                      feed_dict = {image_ph : train_images[idx[:batch_size]],
+                                                                   label_ph : np.squeeze(train_labels[idx[:batch_size]]),
+                                                                   is_training_ph : True})
 
                 time_elapsed.append( time.time() - start_time )
                 total_loss.append(tl)
