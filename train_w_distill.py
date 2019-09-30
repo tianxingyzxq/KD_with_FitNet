@@ -21,8 +21,7 @@ tf.app.flags.DEFINE_string('dataset', 'cifar100',
                            'Distillation method : cifar100, TinyImageNet, CUB200')
 tf.app.flags.DEFINE_string('main_scope', 'Student',
                            'networ`s scope')
-tf.app.flags.('max_steps', 1000000,
-                        """Number of batches to run.""")
+
 tf.app.flags.DEFINE_integer('hintLayerIndex', 16)
 tf.app.flags.DEFINE_integer('guidedLayerIndex',2)
 
