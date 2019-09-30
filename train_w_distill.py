@@ -215,9 +215,9 @@ def main(_):
             train_writer.add_session_log(tf.SessionLog(status=tf.SessionLog.STOP))
             train_writer.close()
 
-def MODEL(model_name, scope, weight_decay, image, label, is_training, reuse, drop, Distillation):
+def MODEL(model_name, scope, weight_decay, image, label, is_training, reuse, drop, Distillation,hintLayerIndex,guidedLayerIndex):
     network_fn = nets_factory.get_network_fn(model_name, weight_decay = weight_decay)
-    end_points = network_fn(image, label, scope, is_training=is_training, reuse=reuse, drop = drop, Distill=Distillation)
+    end_points = network_fn(image, label, scope, is_training=is_training, reuse=reuse, drop = drop, Distill=Distillation,hintLayerIndex=hintLayerIndex,guidedLayerIndex=guidedLayerIndex)
 
     loss = tf.losses.softmax_cross_entropy(label,end_points['Logits'])
     if Distillation == 'DML':
