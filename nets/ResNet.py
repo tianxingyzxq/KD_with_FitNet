@@ -76,7 +76,8 @@ def NetworkBlock(x, nb_layers, depth, stride, is_training=False, reuse=False, na
 def ResNet(image, label, scope, is_training, reuse=False, drop=False, Distill=None,guidedLayerIndex=2,hintLayerIndex=16):
     end_points = {}
 
-    nChannels = [32, 64, 128, 256] if scope != 'teacher' else [32, 64, 128, 256]
+    nChannels = [4, 8, 16, 32] if scope != 'teacher' else [4, 8, 16, 32]
+        #[32, 64, 128, 256]
 
     stride = [1, 2, 2] if scope != 'teacher' else [1, 2, 2]
 
