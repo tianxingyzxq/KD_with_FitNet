@@ -178,6 +178,7 @@ def main(_):
             # set the tf saver
             var = {}
             varToHin={}
+            variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES) + tf.get_collection('BN_collection')
             for v in variables:
                 if v.name[0:7]=="Teacher":
                     i=i+1
