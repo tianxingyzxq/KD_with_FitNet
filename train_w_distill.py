@@ -178,11 +178,13 @@ def main(_):
             # set the tf saver
             var = {}
             varToHin={}
+            hintLayerIndex=FLAGS.hintLayerIndex
+            guidedLayerIndex=FLAGS.guidedLayerIndex
             variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES) + tf.get_collection('BN_collection')
             for v in variables:
                 if v.name[0:7]=="Teacher":
                     i=i+1
-                    if i == hintlayerIndex+1:
+                    if i == hintLayerIndex+1:
                         var["hintLayerNext"]=v
                     else:
                         var[v.name[:-2]] = v#sess.run(v)
