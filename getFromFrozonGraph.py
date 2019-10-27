@@ -52,7 +52,7 @@ def freeze_graph(model_dir, meta_graph_path, output_node_names):
     clear_devices = True
 
     # We start a session using a temporary fresh Graph
-    with tf.Session(graph=tf.Graph()) as sess:
+    with tf.compat.v1.Session(graph=tf.Graph()) as sess:
         # We import the meta graph in the current default Graph
         saver = tf.train.import_meta_graph(meta_graph_path, clear_devices=clear_devices)
 
