@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63c1ef86-2e0d-491f-8e26-0286ff2d68ac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/KD_methods_with_TF-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KD_methods_with_TF-master.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getFromFrozonGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFromFrozonGraph.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/ResNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/ResNet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nets/nets_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/nets_factory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1566334929.azure14" beforeDir="false" afterPath="$PROJECT_DIR$/test/events.out.tfevents.1566334929.azure14" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1566336009.azure14" beforeDir="false" afterPath="$PROJECT_DIR$/test/events.out.tfevents.1566336009.azure14" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/train_w_distill.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_w_distill.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tutorial.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/tutorial.ipynb" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,10 +28,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1P62AvzN6VBBFPJhSyYH6O0kVil" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/student" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -133,14 +126,30 @@
       <workItem from="1567012574947" duration="2004000" />
       <workItem from="1567084289967" duration="10755000" />
       <workItem from="1567277082023" duration="5220000" />
-      <workItem from="1572205485929" duration="264000" />
+      <workItem from="1572205485929" duration="1146000" />
     </task>
+    <task id="LOCAL-00001" summary="test1">
+      <created>1572205749731</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572205749731</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test1">
+      <created>1572205815712</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1572205815712</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test1" />
     <option name="LAST_COMMIT_MESSAGE" value="test1" />
   </component>
