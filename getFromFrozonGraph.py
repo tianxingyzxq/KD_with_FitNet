@@ -16,16 +16,16 @@ home_path = os.path.dirname(os.path.abspath(__file__))
 def main():
     # Get the frozen graph
     #the teacher graph
-    frozen_graphTeacher = freeze_graph("teacher", "hintLayerNext")
+    frozen_graphTeacher = freeze_graph(home_path+"/teacher",home_path+"/teacher/TeacherHint.ckpt.meta", "hintLayerNext")
     #the student grap
-    froszen_graphStuden= freeze_graph("student", "studentGuided")
+    froszen_graphStuden= freeze_graph(home_path+"/student",home_path+"/student/studentGuided.ckpt.meta", "studentGuided")
     # Set the frozen graph as a default graph
     froszen_graphStuden.as_default()
     # Get the output tensor from the pre-trained model
     pre_trained_model_result = froszen_graphStuden.get_tensor_by_name("studentGuided")
 
 
-def freeze_graph(model_dir, output_node_names):
+def freeze_graph(model_dir, meta_graph_path, output_node_names):
     """Extract the sub graph defined by the output nodes and convert
     all its variables into constant
     Args:
@@ -33,7 +33,7 @@ def freeze_graph(model_dir, output_node_names):
         output_node_names: a string, containing all the output node's names,
                            comma separated
     """
-    if not tf.gfile.Exists(model_dir):
+    if not tf.io.gfile.exists(model_dir):
         raise AssertionError(
             "Export directory doesn't exist")
 
@@ -54,7 +54,7 @@ def freeze_graph(model_dir, output_node_names):
     # We start a session using a temporary fresh Graph
     with tf.Session(graph=tf.Graph()) as sess:
         # We import the meta graph in the current default Graph
-        saver = tf.train.import_meta_graph("args.meta_graph_path", clear_devices=clear_devices)
+        saver = tf.train.import_meta_graph(meta_graph_path, clear_devices=clear_devices)
 
         # We restore the weights
         saver.restore(sess, input_checkpoint)
