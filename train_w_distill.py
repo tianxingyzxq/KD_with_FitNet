@@ -211,7 +211,7 @@ def main(_):
             #print("Model saved in path: %s" % save_path)
             # Save the variables to disk.
             #save_path = saver.save(sess, "/tmp/model.ckpt")
-            print("Teacher saved in path: %s" % save_path)
+            #print("Teacher saved in path: %s" % save_path)
             print("Student saved in path: %s" % save_pathToHint)
             ## close all
             tf.logging.info('Finished training! Saving model to disk.')
