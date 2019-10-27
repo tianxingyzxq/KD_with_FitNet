@@ -182,7 +182,7 @@ def main(_):
             guidedLayerIndex=FLAGS.guidedLayerIndex
             variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES) + tf.get_collection('BN_collection')
             for v in variables:
-                if v.name[0:7]=="Teacher":
+                if v.name.startswith("Teacher"):
                     i=i+1
                     if i == hintLayerIndex+1:
                         var["hintLayerNext"]=v
@@ -192,7 +192,7 @@ def main(_):
 
             # saving the student layer only
             for v_itm in variables:
-                if v_itm.name[0:15]== "Student_w_FitNet":
+                 if v_itm.name.startswith("Student_w_FitNet"):
                     i = i + 1
                     if i == guidedLayerIndex :
                         varToHin["guidedLayerNext"]=v_itm
