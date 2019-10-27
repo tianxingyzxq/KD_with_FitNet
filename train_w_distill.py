@@ -204,10 +204,10 @@ def main(_):
             saverTeacher = tf.train.Saver(var)
             saverStudent = tf.train.Saver(varToHin)
 
-            #sio.savemat(FLAGS.train_dir + '/train_params.mat',var)
+            sio.savemat(FLAGS.train_dir + '/train_params.mat',var)
             
             save_path = saverTeacher.save(sess, "TeacherHint.ckpt")
-            save_pathToHint=saverStudent.save(sess, "studentGuided.ckpt")
+            #save_pathToHint=saverStudent.save(sess, "studentGuided.ckpt")
             #print("Model saved in path: %s" % save_path)
             # Save the variables to disk.
             #save_path = saver.save(sess, "/tmp/model.ckpt")
