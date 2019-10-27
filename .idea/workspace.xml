@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="63c1ef86-2e0d-491f-8e26-0286ff2d68ac" name="Default Changelist" comment="" />
+    <list default="true" id="63c1ef86-2e0d-491f-8e26-0286ff2d68ac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/KD_methods_with_TF-master.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/KD_methods_with_TF-master.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getFromFrozonGraph.py" beforeDir="false" afterPath="$PROJECT_DIR$/getFromFrozonGraph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/ResNet.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/ResNet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nets/nets_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/nets/nets_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1566334929.azure14" beforeDir="false" afterPath="$PROJECT_DIR$/test/events.out.tfevents.1566334929.azure14" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/events.out.tfevents.1566336009.azure14" beforeDir="false" afterPath="$PROJECT_DIR$/test/events.out.tfevents.1566336009.azure14" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train_w_distill.py" beforeDir="false" afterPath="$PROJECT_DIR$/train_w_distill.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tutorial.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/tutorial.ipynb" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +33,9 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1P62AvzN6VBBFPJhSyYH6O0kVil" />
   <component name="PropertiesComponent">
@@ -117,10 +132,15 @@
       <workItem from="1567012574947" duration="2004000" />
       <workItem from="1567084289967" duration="10755000" />
       <workItem from="1567277082023" duration="5220000" />
+      <workItem from="1572205485929" duration="264000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test1" />
+    <option name="LAST_COMMIT_MESSAGE" value="test1" />
   </component>
 </project>

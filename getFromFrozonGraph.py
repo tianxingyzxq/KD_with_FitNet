@@ -13,16 +13,16 @@ import op_util
 
 home_path = os.path.dirname(os.path.abspath(__file__))
 
-def main(_):
+def main():
     # Get the frozen graph
     #the teacher graph
-    frozen_graphTeacher = freeze_graph("TeacherHint", "hintLayerNext")
+    frozen_graphTeacher = freeze_graph("teacher", "hintLayerNext")
     #the student grap
-    froszen_graphStuden= freeze_graph("TeacherHint", "studentGuided")
+    froszen_graphStuden= freeze_graph("student", "studentGuided")
     # Set the frozen graph as a default graph
     froszen_graphStuden.as_default()
     # Get the output tensor from the pre-trained model
-    pre_trained_model_result = frozen_graph.get_tensor_by_name("studentGuided")
+    pre_trained_model_result = froszen_graphStuden.get_tensor_by_name("studentGuided")
 
 
 def freeze_graph(model_dir, output_node_names):
@@ -54,7 +54,7 @@ def freeze_graph(model_dir, output_node_names):
     # We start a session using a temporary fresh Graph
     with tf.Session(graph=tf.Graph()) as sess:
         # We import the meta graph in the current default Graph
-        saver = tf.train.import_meta_graph(args.meta_graph_path, clear_devices=clear_devices)
+        saver = tf.train.import_meta_graph("args.meta_graph_path", clear_devices=clear_devices)
 
         # We restore the weights
         saver.restore(sess, input_checkpoint)
@@ -71,4 +71,4 @@ def freeze_graph(model_dir, output_node_names):
 
 
 if __name__ == '__main__':
-    tf.app.run()
+    main()
